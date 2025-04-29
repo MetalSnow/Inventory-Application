@@ -18,7 +18,25 @@ name VARCHAR ( 255 ),
 price INTEGER,
 quantity INTEGER,
 category_id INTEGER REFERENCES category(id)
-);`;
+);
+
+INSERT INTO seller (name) VALUES ('FreshMart'), ('Organic Heaven');
+
+INSERT INTO category (name, seller_id) VALUES 
+    ('Fruits', 1), 
+    ('Vegetables', 1),
+    ('Dairy', 2),
+    ('Bakery', 2);
+    
+INSERT INTO groceryItem (name, price, quantity, category_id) VALUES
+    ('Apple', 4, 50, 1),
+    ('Banana', 2, 30, 1),
+    ('Carrot', 3, 20, 2),
+    ('Spinach', 1, 15, 2),
+    ('Milk', 5, 10, 3),
+    ('Yogurt', 4, 20, 3),
+    ('Bread', 5, 15, 4),
+    ('Croissant', 4, 17, 4);`;
 
 async function main() {
   console.log('seeding...');

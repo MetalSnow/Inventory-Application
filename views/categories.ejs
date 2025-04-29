@@ -1,0 +1,29 @@
+<% const freshMartCategories = categories.filter(item => item.seller ===
+'FreshMart'); const organicHeavenCategories = categories.filter(item =>
+item.seller === 'Organic Heaven'); %>
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <title><%= title %></title>
+  </head>
+  <body>
+    <%- include('header', {title: title}) %> 
+    <h3>FreshMart</h3>
+    <ul>
+      <% freshMartCategories.map(category => { %>
+        <li><%= category.category %></li>
+      <% }) %>
+    </ul>
+  </div>
+  
+  <div>
+    <h3>Organic Heaven</h3>
+    <ul>
+      <% organicHeavenCategories.map(category => { %>
+        <li><%= category.category %></li>
+      <% }) %>
+    </ul>
+
+    <a href="/">Go Back</a>
+  </body>
+</html>

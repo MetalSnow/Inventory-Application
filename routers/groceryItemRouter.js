@@ -2,9 +2,9 @@ const { Router } = require('express');
 
 const groceryRouter = Router();
 
-groceryRouter.get('/grocery', getGroceryItems);
-groceryRouter.post('/grocery', createGroceryItem);
-groceryRouter.post('/grocery', updateGroceryItem);
-groceryRouter.delete('/grocery', deleteGroceryItem);
+groceryRouter.get('/item', getGroceryItems);
+groceryRouter.post('/item', createGroceryItem);
+groceryRouter.post('/item', updateGroceryItem);
+groceryRouter.delete('/item', deleteGroceryItem);
 
 module.exports = groceryRouter;
