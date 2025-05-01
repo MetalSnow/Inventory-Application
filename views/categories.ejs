@@ -7,23 +7,43 @@ item.seller === 'Organic Heaven'); %>
     <title><%= title %></title>
   </head>
   <body>
-    <%- include('header', {title: title}) %> 
+    <%- include('header', {title: title}) %>
     <h3>FreshMart</h3>
     <ul>
       <% freshMartCategories.map(category => { %>
-        <li><%= category.category %></li>
+      <li><a href=""><%= category.category %></a></li>
       <% }) %>
     </ul>
-  </div>
-  
-  <div>
     <h3>Organic Heaven</h3>
     <ul>
       <% organicHeavenCategories.map(category => { %>
-        <li><%= category.category %></li>
+      <li><a href=""><%= category.category %></a></li>
       <% }) %>
     </ul>
 
+    <button onclick="document.getElementById('addCategoryDialog').showModal()">
+      Add Category
+    </button>
+
+    <dialog id="addCategoryDialog">
+      <h2>Add New Category</h2>
+      <form method="POST" action="/categories">
+        <label for="categoryName">Category Name:</label>
+        <input type="text" id="categoryName" name="category" required />
+        <label for="sellerName">Seller Name:</label>
+        <input type="text" id="sellerName" name="seller" required />
+
+        <div>
+          <button type="submit">Add</button>
+          <button
+            type="button"
+            onclick="document.getElementById('addCategoryDialog').close()"
+          >
+            Cancel
+          </button>
+        </div>
+      </form>
+    </dialog>
     <a href="/">Go Back</a>
   </body>
 </html>

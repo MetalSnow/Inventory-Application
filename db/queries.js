@@ -7,4 +7,11 @@ const getAllCategories = async () => {
   return rows;
 };
 
-module.exports = { getAllCategories };
+const insertCategory = async (category) => {
+  await pool.query('INSERT INTO category (name, seller_id) VALUES ($1, $2)', [
+    category.name,
+    category.sellerId,
+  ]);
+};
+
+module.exports = { getAllCategories, insertCategory };

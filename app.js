@@ -13,6 +13,11 @@ app.set('view engine', 'ejs');
 app.use(indexRouter);
 app.use(categoryRouter);
 
+app.use((err, req, res, next) => {
+  console.error(err);
+  res.status(500).send(err);
+});
+
 const PORT = process.env.PORT || 5000;
 
 app.listen(PORT, () => {
