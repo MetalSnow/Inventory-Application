@@ -17,7 +17,7 @@ id INTEGER PRIMARY KEY GENERATED ALWAYS AS IDENTITY,
 name VARCHAR ( 255 ),
 price INTEGER,
 quantity INTEGER,
-category_id INTEGER REFERENCES category(id)
+category_id INTEGER REFERENCES category(id) ON DELETE CASCADE
 );
 
 INSERT INTO seller (name) VALUES ('FreshMart'), ('Organic Heaven');
