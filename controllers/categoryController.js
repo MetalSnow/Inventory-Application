@@ -38,4 +38,11 @@ const createCategory = expressAsyncHandler(async (req, res) => {
   await db.insertCategory(category);
   res.redirect('/categories');
 });
-module.exports = { getCategories, createCategory };
+
+const deleteCategory = expressAsyncHandler(async (req, res) => {
+  const categoryId = req.params.id;
+
+  await db.deleteCategory(categoryId);
+  res.redirect('/categories');
+});
+module.exports = { getCategories, createCategory, deleteCategory };

@@ -2,7 +2,7 @@ const pool = require('./pool');
 
 const getAllCategories = async () => {
   const { rows } =
-    await pool.query(`SELECT category.name as category, seller.name as seller FROM category
+    await pool.query(`SELECT category.id as id, category.name as category, seller.name as seller FROM category
                         JOIN seller ON category.seller_id = seller.id`);
   return rows;
 };
@@ -14,4 +14,8 @@ const insertCategory = async (category) => {
   ]);
 };
 
-module.exports = { getAllCategories, insertCategory };
+const deleteCategory = async (id) => {
+  await pool.query('DELETE FROM category WHERE id = ($1)', [id]);
+};
+
+module.exports = { getAllCategories, insertCategory, deleteCategory };

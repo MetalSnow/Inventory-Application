@@ -11,13 +11,23 @@ item.seller === 'Organic Heaven'); %>
     <h3>FreshMart</h3>
     <ul>
       <% freshMartCategories.map(category => { %>
-      <li><a href=""><%= category.category %></a></li>
+      <li>
+        <a href=""><%= category.category %></a>
+        <form action="/categories/<%= category.id %>/delete" method="post">
+          <button type="submit">Delete</button>
+        </form>
+      </li>
       <% }) %>
     </ul>
     <h3>Organic Heaven</h3>
     <ul>
       <% organicHeavenCategories.map(category => { %>
-      <li><a href=""><%= category.category %></a></li>
+      <li>
+        <a href=""><%= category.category %></a>
+        <form action="/categories/<%= category.id %>/delete" method="post">
+          <button type="submit">Delete</button>
+        </form>
+      </li>
       <% }) %>
     </ul>
 
@@ -31,7 +41,10 @@ item.seller === 'Organic Heaven'); %>
         <label for="categoryName">Category Name:</label>
         <input type="text" id="categoryName" name="category" required />
         <label for="sellerName">Seller Name:</label>
-        <input type="text" id="sellerName" name="seller" required />
+        <select name="seller" id="sellerName">
+          <option value="FreshMart">FreshMart</option>
+          <option value="Organic Heaven">Organic Heaven</option>
+        </select>
 
         <div>
           <button type="submit">Add</button>
