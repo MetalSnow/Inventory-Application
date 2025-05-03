@@ -28,7 +28,20 @@ const getCategories = expressAsyncHandler(async (req, res) => {
     throw new CustomNotFoundError('No Categories have been found');
   }
 
-  res.render('categories', { title: 'Grocery Store', categories: categories });
+  const freshMartCategories = categories.filter(
+    (item) => item.seller === 'FreshMart'
+  );
+  const organicHeavenCategories = categories.filter(
+    (item) => item.seller === 'Organic Heaven'
+  );
+
+  res.render('categories', {
+    title: 'Grocery Store',
+    categories: {
+      freshMart: freshMartCategories,
+      organicHeaven: organicHeavenCategories,
+    },
+  });
 });
 
 const createCategory = expressAsyncHandler(async (req, res) => {
@@ -45,4 +58,18 @@ const deleteCategory = expressAsyncHandler(async (req, res) => {
   await db.deleteCategory(categoryId);
   res.redirect('/categories');
 });
-module.exports = { getCategories, createCategory, deleteCategory };
+
+const updateCategory = expressAsyncHandler(async (req, res) => {
+  const categoryId = req.params.id;
+  const newName = req.body.newName;
+
+  await db.updateCategory(categoryId, newName);
+  res.redirect('/categories');
+});
+
+module.exports = {
+  getCategories,
+  createCategory,
+  deleteCategory,
+  updateCategory,
+};

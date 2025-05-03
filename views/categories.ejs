@@ -1,18 +1,29 @@
-<% const freshMartCategories = categories.filter(item => item.seller ===
-'FreshMart'); const organicHeavenCategories = categories.filter(item =>
-item.seller === 'Organic Heaven'); %>
 <!DOCTYPE html>
 <html lang="en">
   <head>
     <title><%= title %></title>
+    <link rel="stylesheet" href="style.css" />
+    <script src="index.js" defer></script>
   </head>
   <body>
     <%- include('header', {title: title}) %>
     <h3>FreshMart</h3>
     <ul>
-      <% freshMartCategories.map(category => { %>
+      <% categories.freshMart.map(category => { %>
       <li>
         <a href=""><%= category.category %></a>
+        <form
+          action="/categories/<%= category.id %>/update"
+          method="POST"
+          class="edit-form"
+          style="display: none"
+        >
+          <input type="hidden" name="_method" value="PATCH" />
+          <input type="text" name="newName" value="<%= category.category %>" />
+          <button type="submit">Save</button>
+          <button type="button" class="cancel-edit">Cancel</button>
+        </form>
+        <button class="edit-button">Edit</button>
         <form action="/categories/<%= category.id %>/delete" method="post">
           <button type="submit">Delete</button>
         </form>
@@ -21,9 +32,21 @@ item.seller === 'Organic Heaven'); %>
     </ul>
     <h3>Organic Heaven</h3>
     <ul>
-      <% organicHeavenCategories.map(category => { %>
+      <% categories.organicHeaven.map(category => { %>
       <li>
         <a href=""><%= category.category %></a>
+        <form
+          action="/categories/<%= category.id %>/update"
+          method="POST"
+          class="edit-form"
+          style="display: none"
+        >
+          <input type="hidden" name="_method" value="PATCH" />
+          <input type="text" name="newName" value="<%= category.category %>" />
+          <button type="submit">Save</button>
+          <button type="button" class="cancel-edit">Cancel</button>
+        </form>
+        <button class="edit-button">Edit</button>
         <form action="/categories/<%= category.id %>/delete" method="post">
           <button type="submit">Delete</button>
         </form>
@@ -31,9 +54,7 @@ item.seller === 'Organic Heaven'); %>
       <% }) %>
     </ul>
 
-    <button onclick="document.getElementById('addCategoryDialog').showModal()">
-      Add Category
-    </button>
+    <button id="addCategory">Add Category</button>
 
     <dialog id="addCategoryDialog">
       <h2>Add New Category</h2>
@@ -48,12 +69,7 @@ item.seller === 'Organic Heaven'); %>
 
         <div>
           <button type="submit">Add</button>
-          <button
-            type="button"
-            onclick="document.getElementById('addCategoryDialog').close()"
-          >
-            Cancel
-          </button>
+          <button id="cancelBtn">Cancel</button>
         </div>
       </form>
     </dialog>
