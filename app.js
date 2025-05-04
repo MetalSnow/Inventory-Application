@@ -2,6 +2,7 @@ const express = require('express');
 const path = require('node:path');
 const indexRouter = require('./routers/indexRouter');
 const categoryRouter = require('./routers/categoryRouter');
+const groceryRouter = require('./routers/groceryItemRouter');
 
 const app = express();
 
@@ -16,6 +17,7 @@ app.use(express.static(assetspath));
 
 app.use(indexRouter);
 app.use(categoryRouter);
+app.use(groceryRouter);
 
 app.use((err, req, res, next) => {
   console.error(err);

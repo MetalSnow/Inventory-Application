@@ -1,28 +1,9 @@
 const expressAsyncHandler = require('express-async-handler');
-const db = require('../db/queries');
+const dbCategories = require('../db/categoryQueries');
 const CustomNotFoundError = require('../errors/CustomNotFoundError');
-const { body, validationResult } = require('express-validator');
-
-const alphaErr = 'must only contain letters.';
-const mandatory = 'All fields are mandatory.';
-
-// const validateUser = [
-//   body('category')
-//     .trim()
-//     .isAlpha()
-//     .withMessage(`Category name ${alphaErr}`)
-//     .notEmpty()
-//     .withMessage(mandatory),
-//   body('seller')
-//     .trim()
-//     .isAlpha()
-//     .withMessage(`Seller ${alphaErr}`)
-//     .notEmpty()
-//     .withMessage(mandatory),
-// ];
 
 const getCategories = expressAsyncHandler(async (req, res) => {
-  const categories = await db.getAllCategories();
+  const categories = await dbCategories.getAllCategories();
 
   if (!categories) {
     throw new CustomNotFoundError('No Categories have been found');
@@ -48,14 +29,14 @@ const createCategory = expressAsyncHandler(async (req, res) => {
   const sellerId = req.body.seller == 'FreshMart' ? 1 : 2;
   const category = { name: req.body.category, sellerId: sellerId };
 
-  await db.insertCategory(category);
+  await dbCategories.insertCategory(category);
   res.redirect('/categories');
 });
 
 const deleteCategory = expressAsyncHandler(async (req, res) => {
   const categoryId = req.params.id;
 
-  await db.deleteCategory(categoryId);
+  await dbCategories.deleteCategory(categoryId);
   res.redirect('/categories');
 });
 
@@ -63,7 +44,7 @@ const updateCategory = expressAsyncHandler(async (req, res) => {
   const categoryId = req.params.id;
   const newName = req.body.newName;
 
-  await db.updateCategory(categoryId, newName);
+  await dbCategories.updateCategory(categoryId, newName);
   res.redirect('/categories');
 });
 

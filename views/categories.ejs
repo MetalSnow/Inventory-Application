@@ -11,7 +11,7 @@
     <ul>
       <% categories.freshMart.map(category => { %>
       <li>
-        <a href=""><%= category.category %></a>
+        <a href="/items/<%= category.id %>"><%= category.category %></a>
         <form
           action="/categories/<%= category.id %>/update"
           method="POST"
@@ -34,7 +34,7 @@
     <ul>
       <% categories.organicHeaven.map(category => { %>
       <li>
-        <a href=""><%= category.category %></a>
+        <a href="/items/<%= category.id %>"><%= category.category %></a>
         <form
           action="/categories/<%= category.id %>/update"
           method="POST"

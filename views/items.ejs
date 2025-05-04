@@ -4,8 +4,21 @@
     <title><%= title %></title>
   </head>
   <body>
-    <header>
-      <h1><%= title %></h1>
-    </header>
+    <%- include('header', {title: title}) %>
+    <h2>Available Items</h2>
+    <% if(items.length == 0){ %>
+    <p>There are no items yet!</p>
+
+    <% } else{%>
+    <ul>
+      <% items.map((item)=>{ %>
+      <li>
+        <p><%=item.name%></p>
+        <p>PRICE: <%=item.price%></p>
+        <p>QUANTITY<%=item.quantity%></p>
+      </li>
+      <% }) %>
+    </ul>
+    <% } %>
   </body>
 </html>
