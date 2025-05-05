@@ -1,0 +1,11 @@
+body {
+  margin: 0;
+}
+
+.category-link {
+  background-color: white;
+  border: none;
+  color: rgb(2, 75, 33);
+  text-decoration: underline;
+  cursor: pointer;
+}

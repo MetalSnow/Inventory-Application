@@ -1,11 +1,11 @@
-const modal = document.getElementById('addCategoryDialog');
-const addBtn = document.querySelector('#addCategory');
-const cancelBtn = document.querySelector('#cancelBtn');
+const modalCat = document.getElementById('addCategoryDialog');
+const addCat = document.querySelector('#addCategory');
+const cancelCat = document.querySelector('#cancelCategory');
 
-addBtn.addEventListener('click', () => modal.showModal());
-cancelBtn.addEventListener('click', () => modal.close());
+addCat.addEventListener('click', () => modalCat.showModal());
+cancelCat.addEventListener('click', () => modalCat.close());
 
-document.querySelectorAll('li').forEach((item) => {
+document.querySelectorAll('.list').forEach((item) => {
   const editButton = item.querySelector('.edit-button');
   const editForm = item.querySelector('.edit-form');
   const cancelButton = item.querySelector('.cancel-edit');
@@ -25,3 +25,7 @@ document.querySelectorAll('li').forEach((item) => {
     editForm.style.display = 'none';
   });
 });
+
+// const categoryId = window.location.pathname.split('/').pop();
+
+// document.getElementById('categoryId').value = categoryId;
