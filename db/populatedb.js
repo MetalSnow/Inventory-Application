@@ -12,7 +12,7 @@ name VARCHAR ( 255 ),
 seller_id INTEGER REFERENCES seller(id)
 );
 
-CREATE TABLE IF NOT EXISTS groceryItem (
+CREATE TABLE IF NOT EXISTS grocery_items (
 id INTEGER PRIMARY KEY GENERATED ALWAYS AS IDENTITY,
 name VARCHAR ( 255 ),
 price INTEGER,
@@ -28,14 +28,14 @@ INSERT INTO category (name, seller_id) VALUES
     ('Dairy', 2),
     ('Bakery', 2);
     
-INSERT INTO groceryItem (name, price, quantity, category_id) VALUES
-    ('Apple', 4, 50, 1),
+INSERT INTO grocery_items (name, price, quantity, category_id) VALUES
+    ('Apple', 3, 50, 1),
     ('Banana', 2, 30, 1),
-    ('Carrot', 3, 20, 2),
+    ('Carrot', 2, 20, 2),
     ('Spinach', 1, 15, 2),
-    ('Milk', 5, 10, 3),
-    ('Yogurt', 4, 20, 3),
-    ('Bread', 5, 15, 4),
+    ('Milk', 4, 10, 3),
+    ('Yogurt', 5, 20, 3),
+    ('Bread', 3, 15, 4),
     ('Croissant', 4, 17, 4);`;
 
 async function main() {

@@ -1,6 +1,8 @@
 <!DOCTYPE html>
 <html lang="en">
   <head>
+    <link rel="stylesheet" href="css/style.css" />
+    <script src="js/items.js" defer></script>
     <title><%= title %></title>
   </head>
   <body>
@@ -14,11 +16,32 @@
       <% items.map((item)=>{ %>
       <li>
         <p><%=item.name%></p>
-        <p>PRICE: <%=item.price%></p>
-        <p>QUANTITY<%=item.quantity%></p>
+        <p>PRICE: $<%=item.price%></p>
+        <p>QUANTITY: <%=item.quantity%></p>
       </li>
       <% }) %>
     </ul>
     <% } %>
+
+    <button id="addItem">Add Item</button>
+
+    <dialog id="addItemDialog">
+      <h2>Add New Category</h2>
+      <form method="POST" action="/items/create">
+        <input type="hidden" id="categoryId" name="categoryId" />
+        <label for="name">Item Name:</label>
+        <input type="text" id="name" name="name" required />
+        <label for="price">Item Price:</label>
+        <input type="text" id="price" name="price" required />
+        <label for="quantity">Item Quantity:</label>
+        <input type="text" id="quantity" name="quantity" required />
+
+        <div>
+          <button type="submit">Add</button>
+          <button type="button" id="cancelItem">Cancel</button>
+        </div>
+      </form>
+    </dialog>
+    <a href="/categories">Back To Categories</a>
   </body>
 </html>

@@ -6,14 +6,14 @@ const groceryRouter = require('./routers/groceryItemRouter');
 
 const app = express();
 
-app.use(express.urlencoded());
-
-app.set('views', path.join(__dirname, '/views'));
-app.set('view engine', 'ejs');
-
 const assetspath = path.join(__dirname, '/public');
 
 app.use(express.static(assetspath));
+
+app.use(express.urlencoded({ extended: true }));
+
+app.set('views', path.join(__dirname, '/views'));
+app.set('view engine', 'ejs');
 
 app.use(indexRouter);
 app.use(categoryRouter);

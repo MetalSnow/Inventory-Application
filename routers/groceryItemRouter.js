@@ -1,10 +1,13 @@
 const { Router } = require('express');
-const { getGroceryItems } = require('../controllers/groceryController');
+const {
+  getGroceryItems,
+  createGroceryItem,
+} = require('../controllers/groceryController');
 
 const groceryRouter = Router();
 
-groceryRouter.get('/items/:id', getGroceryItems);
-// groceryRouter.post('/item', createGroceryItem);
+groceryRouter.get('/items', getGroceryItems);
+groceryRouter.post('/items/create', createGroceryItem);
 // groceryRouter.post('/item', updateGroceryItem);
 // groceryRouter.delete('/item', deleteGroceryItem);
 

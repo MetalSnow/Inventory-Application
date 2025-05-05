@@ -2,10 +2,23 @@ const expressAsyncHandler = require('express-async-handler');
 const dbItems = require('../db/itemQueries');
 
 const getGroceryItems = expressAsyncHandler(async (req, res) => {
-  const categoryId = req.params.id;
+  const categoryId = req.query.categoryId;
   const items = await dbItems.getAllItems(categoryId);
 
   res.render('items', { title: 'Grocery Store', items: items });
 });
 
-module.exports = { getGroceryItems };
+const createGroceryItem = expressAsyncHandler(async (req, res) => {
+  const newItem = {
+    name: req.body.name,
+    price: req.body.price,
+    quantity: req.body.quantity,
+    categoryId: req.body.categoryId,
+  };
+
+  await dbItems.insertItem(newItem);
+
+  res.redirect(`/items?categoryId=${newItem.categoryId}`);
+});
+
+module.exports = { getGroceryItems, createGroceryItem };
