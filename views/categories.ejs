@@ -2,16 +2,21 @@
 <html lang="en">
   <head>
     <title><%= title %></title>
-    <link rel="stylesheet" href="style.css" />
-    <script src="index.js" defer></script>
+    <link rel="stylesheet" href="css/style.css" />
+    <script src="js/categories.js" defer></script>
   </head>
   <body>
     <%- include('header', {title: title}) %>
     <h3>FreshMart</h3>
     <ul>
       <% categories.freshMart.map(category => { %>
-      <li>
-        <a href="/items/<%= category.id %>"><%= category.category %></a>
+      <li class="list">
+        <form action="/items" method="get">
+          <input type="hidden" name="categoryId" value="<%= category.id %>" />
+          <button type="submit" class="category-link">
+            <%= category.category %>
+          </button>
+        </form>
         <form
           action="/categories/<%= category.id %>/update"
           method="POST"
@@ -33,8 +38,13 @@
     <h3>Organic Heaven</h3>
     <ul>
       <% categories.organicHeaven.map(category => { %>
-      <li>
-        <a href="/items/<%= category.id %>"><%= category.category %></a>
+      <li class="list">
+        <form action="/items" method="get">
+          <input type="hidden" name="categoryId" value="<%= category.id %>" />
+          <button type="submit" class="category-link">
+            <%= category.category %>
+          </button>
+        </form>
         <form
           action="/categories/<%= category.id %>/update"
           method="POST"
@@ -69,7 +79,7 @@
 
         <div>
           <button type="submit">Add</button>
-          <button id="cancelBtn">Cancel</button>
+          <button type="button" id="cancelCategory">Cancel</button>
         </div>
       </form>
     </dialog>
