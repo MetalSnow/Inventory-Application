@@ -9,22 +9,22 @@ const getGroceryItems = expressAsyncHandler(async (req, res) => {
 });
 
 const createGroceryItem = expressAsyncHandler(async (req, res) => {
+  const categoryId = req.get('referer').split('').pop();
   const newItem = {
     name: req.body.name,
     price: req.body.price,
     quantity: req.body.quantity,
-    categoryId: req.body.categoryId,
+    categoryId: categoryId,
   };
 
   await dbItems.insertItem(newItem);
 
-  res.redirect(`/items?categoryId=${newItem.categoryId}`);
+  res.redirect(req.get('referer'));
 });
 
 const deleteGroceryItem = expressAsyncHandler(async (req, res) => {
   const itemId = req.params.id;
   console.log(itemId);
-  console.log(req.get('referer'));
 
   await dbItems.deleteItem(itemId);
 
