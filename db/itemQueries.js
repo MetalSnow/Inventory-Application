@@ -8,6 +8,7 @@ const getAllItems = async (categoryId) => {
 
   return rows;
 };
+
 const insertItem = async (newItem) => {
   await pool.query(
     'INSERT INTO grocery_items (name, price, quantity, category_id) VALUES ($1, $2, $3, $4)',
@@ -15,4 +16,8 @@ const insertItem = async (newItem) => {
   );
 };
 
-module.exports = { getAllItems, insertItem };
+const deleteItem = async (itemId) => {
+  await pool.query('DELETE FROM grocery_items WHERE id = ($1)', [itemId]);
+};
+
+module.exports = { getAllItems, insertItem, deleteItem };

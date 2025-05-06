@@ -18,6 +18,9 @@
         <p><%=item.name%></p>
         <p>PRICE: $<%=item.price%></p>
         <p>QUANTITY: <%=item.quantity%></p>
+        <form action="/items/<%= item.id %>/delete" method="post">
+          <button type="submit">Delete</button>
+        </form>
       </li>
       <% }) %>
     </ul>
