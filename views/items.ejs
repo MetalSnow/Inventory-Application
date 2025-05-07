@@ -18,6 +18,23 @@
         <p><%=item.name%></p>
         <p>PRICE: $<%=item.price%></p>
         <p>QUANTITY: <%=item.quantity%></p>
+        <form
+          action="/items/<%= item.id %>/update"
+          method="POST"
+          class="edit-form"
+          style="display: none"
+        >
+          <input type="hidden" name="_method" value="PATCH" />
+          <label for="name">Item Name:</label>
+          <input type="text" name="itemName" value="<%= item.name %>" />
+          <label for="price">Item Price:</label>
+          <input type="text" name="price" value="<%= item.price %>" />
+          <label for="quantity">Item Quantity:</label>
+          <input type="text" name="quantity" value="<%= item.quantity %>" />
+          <button type="submit">Save</button>
+          <button type="button" class="cancel-edit">Cancel</button>
+        </form>
+        <button class="edit-button">Edit</button>
         <form action="/items/<%= item.id %>/delete" method="post">
           <button type="submit">Delete</button>
         </form>

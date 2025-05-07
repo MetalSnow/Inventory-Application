@@ -9,7 +9,7 @@ document.querySelectorAll('.list').forEach((item) => {
   const editButton = item.querySelector('.edit-button');
   const editForm = item.querySelector('.edit-form');
   const cancelButton = item.querySelector('.cancel-edit');
-  const categoryLink = item.querySelector('a');
+  const categoryLink = item.querySelector('.category-link');
 
   // Show form when edit button clicked
   editButton.addEventListener('click', function () {
@@ -25,7 +25,3 @@ document.querySelectorAll('.list').forEach((item) => {
     editForm.style.display = 'none';
   });
 });
-
-// const categoryId = window.location.pathname.split('/').pop();
-
-// document.getElementById('categoryId').value = categoryId;
