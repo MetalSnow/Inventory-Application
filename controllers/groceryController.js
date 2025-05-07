@@ -19,7 +19,7 @@ const createGroceryItem = expressAsyncHandler(async (req, res) => {
 
   await dbItems.insertItem(newItem);
 
-  res.redirect(req.get('referer'));
+  res.redirect(req.get('referer') || '/categories');
 });
 
 const deleteGroceryItem = expressAsyncHandler(async (req, res) => {
@@ -28,7 +28,7 @@ const deleteGroceryItem = expressAsyncHandler(async (req, res) => {
 
   await dbItems.deleteItem(itemId);
 
-  res.redirect(req.get('referer'));
+  res.redirect(req.get('referer') || '/categories');
 });
 
 module.exports = { getGroceryItems, createGroceryItem, deleteGroceryItem };
