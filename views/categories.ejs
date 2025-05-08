@@ -6,7 +6,7 @@
     <script src="js/categories.js" defer></script>
   </head>
   <body>
-    <%- include('header', {title: title}) %>
+    <%- include('partials/header.ejs', {title: title}) %>
     <h3>FreshMart</h3>
     <ul>
       <% categories.freshMart.map(category => { %>
@@ -68,6 +68,7 @@
 
     <dialog id="addCategoryDialog">
       <h2>Add New Category</h2>
+      <%- include('partials/errors.ejs') %>
       <form method="POST" action="/categories">
         <label for="categoryName">Category Name:</label>
         <input type="text" id="categoryName" name="category" required />

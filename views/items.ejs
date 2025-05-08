@@ -6,7 +6,7 @@
     <title><%= title %></title>
   </head>
   <body>
-    <%- include('header', {title: title}) %>
+    <%- include('partials/header.ejs', {title: title}) %>
     <h2>Available Items</h2>
     <% if(items.length == 0){ %>
     <p>There are no items yet!</p>
