@@ -1,7 +1,66 @@
+@import url('https://fonts.googleapis.com/css2?family=Fira+Sans:ital,wght@0,100;0,200;0,300;0,400;0,500;0,600;0,700;0,800;0,900;1,100;1,200;1,300;1,400;1,500;1,600;1,700;1,800;1,900&family=Nunito:ital,wght@0,200..1000;1,200..1000&family=Sansation:ital,wght@0,300;0,400;0,700;1,300;1,400;1,700&display=swap');
+
 body {
   margin: 0;
-}
+  font-family: 'Fira Sans', Arial, Helvetica, sans-serif;
+  height: 100vh;
 
+  & header {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    padding: 40px;
+    border-bottom: 1px solid rgb(231, 231, 231);
+    box-shadow: 1px 1px 4px 1px rgba(0, 0, 0, 0.3);
+
+    & h1 {
+      margin: 0;
+      color: green;
+    }
+
+    & img {
+      width: 15px;
+    }
+
+    & .credits {
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      gap: 2px;
+
+      & a {
+        text-decoration: none;
+        font-size: 16px;
+        font-weight: bold;
+        color: black;
+        &:hover {
+          color: red;
+        }
+      }
+      & a:hover .github-logo {
+        filter: invert(18%) sepia(100%) saturate(7463%) hue-rotate(-15deg)
+          brightness(104%) contrast(109%);
+      }
+    }
+  }
+
+  & .index-container {
+    height: 300px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    & .start-link {
+      text-align: center;
+      font-size: 25px;
+      padding: 40px;
+      border-radius: 6px;
+      font-weight: 800;
+      color: rgb(2, 55, 5);
+      background-color: greenyellow;
+      text-decoration: none;
+    }
+  }
+}
 .category-link {
   background-color: white;
   border: none;

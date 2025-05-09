@@ -2,9 +2,12 @@
 <html lang="en">
   <head>
     <title><%= title %></title>
+    <link rel="stylesheet" href="css/style.css" />
   </head>
   <body>
     <%- include('partials/header', {title: title}) %>
-    <a href="/categories">Start Shopping</a>
+    <div class="index-container">
+      <a href="/categories" class="start-link">Start Shopping</a>
+    </div>
   </body>
 </html>
