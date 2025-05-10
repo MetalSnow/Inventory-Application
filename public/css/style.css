@@ -80,13 +80,15 @@ body {
       font-size: 1.5rem;
       display: flex;
       align-items: center;
-      justify-content: space-around;
+      gap: 2rem;
 
       & div {
         width: 50%;
         & ul {
           list-style: none;
           padding: 0;
+          height: 143px;
+          overflow-y: auto;
           & li {
             padding: 20px;
             display: flex;
@@ -159,6 +161,20 @@ body {
       &:hover {
         opacity: 0.8;
       }
+    }
+  }
+
+  & dialog {
+    & input {
+      font-size: 1rem;
+      padding: 2px 4px;
+    }
+    & #sellerName {
+      padding: 2px 4px;
+      font-size: 1rem;
+    }
+    & div {
+      margin-top: 15px;
     }
   }
 }
