@@ -14,7 +14,7 @@ document.querySelectorAll('li').forEach((el) => {
   editButton.addEventListener('click', function () {
     itemInfo.forEach((p) => (p.style.display = 'none'));
     editButton.style.display = 'none';
-    editForm.style.display = 'block';
+    editForm.style.display = 'flex';
   });
 
   cancelButton.addEventListener('click', function () {

@@ -7,61 +7,63 @@
   </head>
   <body>
     <%- include('partials/header.ejs', {title: title}) %>
-    <h2>Available Items</h2>
-    <% if(items.length == 0){ %>
-    <p>There are no items yet!</p>
+    <main class="items-container">
+      <h2>Available Items</h2>
+      <% if(items.length == 0){ %>
+      <p>There are no items yet!</p>
 
-    <% } else{%>
-    <ul>
-      <% items.map((item)=>{ %>
-      <li>
-        <p><%=item.name%></p>
-        <p>PRICE: $<%=item.price%></p>
-        <p>QUANTITY: <%=item.quantity%></p>
-        <form
-          action="/items/<%= item.id %>/update"
-          method="POST"
-          class="edit-form"
-          style="display: none"
-        >
-          <input type="hidden" name="_method" value="PATCH" />
+      <% } else{%>
+      <ul>
+        <% items.map((item)=>{ %>
+        <li>
+          <p><%=item.name%></p>
+          <p>PRICE: <span>$<%=item.price%></span></p>
+          <p>QUANTITY: <span><%=item.quantity%></span></p>
+          <form
+            action="/items/<%= item.id %>/update"
+            method="POST"
+            class="edit-form"
+            style="display: none"
+          >
+            <input type="hidden" name="_method" value="PATCH" />
+            <label for="name">Item Name:</label>
+            <input type="text" name="itemName" value="<%= item.name %>" />
+            <label for="price">Item Price:</label>
+            <input type="text" name="price" value="<%= item.price %>" />
+            <label for="quantity">Item Quantity:</label>
+            <input type="text" name="quantity" value="<%= item.quantity %>" />
+            <button type="submit">Save</button>
+            <button type="button" class="cancel-edit">Cancel</button>
+          </form>
+          <button class="edit-button">Edit</button>
+          <form action="/items/<%= item.id %>/delete" method="post">
+            <button type="submit" class="delete-btn">Delete</button>
+          </form>
+        </li>
+        <% }) %>
+      </ul>
+      <% } %>
+
+      <button id="addItem">+ Add Item</button>
+
+      <dialog id="addItemDialog">
+        <h2>Add New Category</h2>
+        <form method="POST" action="/items/create">
           <label for="name">Item Name:</label>
-          <input type="text" name="itemName" value="<%= item.name %>" />
+          <input type="text" id="name" name="name" required />
           <label for="price">Item Price:</label>
-          <input type="text" name="price" value="<%= item.price %>" />
+          <input type="text" id="price" name="price" required />
           <label for="quantity">Item Quantity:</label>
-          <input type="text" name="quantity" value="<%= item.quantity %>" />
-          <button type="submit">Save</button>
-          <button type="button" class="cancel-edit">Cancel</button>
+          <input type="text" id="quantity" name="quantity" required />
+
+          <div>
+            <button type="submit">Add</button>
+            <button type="button" id="cancelItem">Cancel</button>
+          </div>
         </form>
-        <button class="edit-button">Edit</button>
-        <form action="/items/<%= item.id %>/delete" method="post">
-          <button type="submit">Delete</button>
-        </form>
-      </li>
-      <% }) %>
-    </ul>
-    <% } %>
-
-    <button id="addItem">Add Item</button>
-
-    <dialog id="addItemDialog">
-      <h2>Add New Category</h2>
-      <form method="POST" action="/items/create">
-        <label for="name">Item Name:</label>
-        <input type="text" id="name" name="name" required />
-        <label for="price">Item Price:</label>
-        <input type="text" id="price" name="price" required />
-        <label for="quantity">Item Quantity:</label>
-        <input type="text" id="quantity" name="quantity" required />
-
-        <div>
-          <button type="submit">Add</button>
-          <button type="button" id="cancelItem">Cancel</button>
-        </div>
-      </form>
-    </dialog>
-    <a href="/categories">Back To Categories</a>
+      </dialog>
+      <a href="/categories" class="back-link">&#x25c0; Back To Categories</a>
+    </main>
     <%- include('partials/footer') %>
   </body>
 </html>
