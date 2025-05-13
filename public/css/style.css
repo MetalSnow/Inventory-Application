@@ -19,6 +19,12 @@ body {
     & h1 {
       margin: 0;
       color: rgb(2, 55, 5);
+      display: flex;
+      align-items: center;
+      gap: 0.5rem;
+      & img {
+        width: 40px;
+      }
     }
 
     & img {
@@ -255,6 +261,11 @@ body {
       color: red;
       text-decoration: none;
     }
+  }
+
+  & footer {
+    padding: 10px;
+    font-size: 14px;
   }
 }
 
