@@ -40,11 +40,22 @@
                 <button type="button" class="cancel-edit">Cancel</button>
               </form>
               <button class="edit-button">Edit</button>
+              <button class="delete-btn">Delete</button>
               <form
                 action="/categories/<%= category.id %>/delete"
                 method="post"
+                style="display: none"
+                class="delete-form"
               >
-                <button type="submit" class="delete-btn">Delete</button>
+                <input
+                  type="text"
+                  name="adminKey"
+                  id="adminKey"
+                  placeholder="Enter Admin Key"
+                  required
+                />
+                <button type="submit">Confirm</button>
+                <button type="button" class="cancel-deletion">Cancel</button>
               </form>
             </li>
             <% }) %>
@@ -70,6 +81,7 @@
                 method="POST"
                 class="edit-form"
                 style="display: none"
+                id="organicHeavenForm"
               >
                 <input type="hidden" name="_method" value="PATCH" />
                 <input
@@ -81,11 +93,22 @@
                 <button type="button" class="cancel-edit">Cancel</button>
               </form>
               <button class="edit-button">Edit</button>
+              <button class="delete-btn">Delete</button>
               <form
                 action="/categories/<%= category.id %>/delete"
                 method="post"
+                style="display: none"
+                class="delete-form"
               >
-                <button type="submit" class="delete-btn">Delete</button>
+                <input
+                  type="text"
+                  name="adminKey"
+                  id="adminKey"
+                  placeholder="Enter Admin Key"
+                  required
+                />
+                <button type="submit">Confirm</button>
+                <button type="button" class="cancel-deletion">Cancel</button>
               </form>
             </li>
             <% }) %>

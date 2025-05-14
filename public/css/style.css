@@ -95,7 +95,7 @@ body {
         & ul {
           list-style: none;
           padding: 0;
-          height: 143px;
+          height: 286px;
           overflow-y: auto;
           & li {
             padding: 20px;

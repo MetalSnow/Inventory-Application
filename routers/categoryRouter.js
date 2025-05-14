@@ -5,6 +5,7 @@ const {
   deleteCategory,
   updateCategory,
 } = require('../controllers/categoryController');
+const authenticateAdmin = require('../middlewares/auth');
 
 const categoryRouter = Router();
 
@@ -18,7 +19,11 @@ categoryRouter.use((req, res, next) => {
 
 categoryRouter.get('/categories', getCategories);
 categoryRouter.post('/categories', createCategory);
-categoryRouter.post('/categories/:id/delete', deleteCategory);
+categoryRouter.post(
+  '/categories/:id/delete',
+  authenticateAdmin,
+  deleteCategory
+);
 categoryRouter.patch('/categories/:id/update', updateCategory);
 
 module.exports = categoryRouter;
